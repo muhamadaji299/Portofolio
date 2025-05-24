@@ -150,16 +150,18 @@
     .profile-wrapper::before {
         content: "";
         position: absolute;
-        top: -15px;
-        left: -15px;
-        width: calc(100% + 30px);
-        height: calc(100% + 30px);
+        top: -25px;
+        /* makin negatif = makin besar ke luar */
+        left: -25px;
+        width: calc(100% + 50px);
+        /* total tambahan sesuai top/left * 2 */
+        height: calc(100% + 50px);
         border-radius: 50%;
-        background: conic-gradient(#7c8185, #3e3d3d, #6c757d);
-        /* gradasi warna */
+        background: conic-gradient(#979a9c, #3e3d3d, #979a9c);
         animation: rotate 4s linear infinite;
         z-index: 0;
     }
+
 
     .profile-wrapper img {
         position: relative;
