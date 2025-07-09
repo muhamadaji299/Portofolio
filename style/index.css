@@ -64,6 +64,14 @@
         color: #f55247;
     }
 
+    .figma:hover{
+     background: linear-gradient(90deg, #f24e1e, #ff7262, #a259ff, #1abcfe, #0acf83);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* fallback */
+  transition: 0.3s;
+    }
+
     .js:hover {
         color: #f7df1e;
     }
