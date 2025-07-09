@@ -8,6 +8,7 @@
   <link href="style/botstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- AOS CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
@@ -370,6 +371,49 @@
         offset: 120,
       });
     });
+
+      window.addEventListener('load', function () {
+    // Cek apakah nama sudah disimpan
+    if (!localStorage.getItem('user_name')) {
+      // Tampilkan input nama
+      Swal.fire({
+        title: 'Halo 👋',
+        text: 'Masukkan nama kamu terlebih dahulu:',
+        input: 'text',
+        inputPlaceholder: 'Contoh: Aji',
+        confirmButtonText: 'Lanjutkan',
+        allowOutsideClick: false,
+        inputValidator: (value) => {
+          if (!value) {
+            return 'Nama tidak boleh kosong!';
+          }
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const nama = result.value;
+          localStorage.setItem('user_name', nama);
+
+          // Tampilkan alert selamat datang
+          Swal.fire({
+            title: `Selamat Datang, ${nama}! 🎉`,
+            text: 'Senang kamu mengunjungi portfolio saya.',
+            icon: 'success',
+            confirmButtonText: 'Terima kasih',
+            confirmButtonColor: '#3085d6'
+          });
+        }
+      });
+    } else {
+      // Jika sudah pernah isi nama, bisa juga langsung sapa lagi
+      const nama = localStorage.getItem('user_name');
+      Swal.fire({
+        title: `Hai lagi, ${nama}! 👋`,
+        text: 'Selamat datang kembali di portfolio saya.',
+        icon: 'info',
+        confirmButtonText: 'Lanjutkan'
+      });
+    }
+  });
   </script>
 
   <script src="style/script.js"></script>
